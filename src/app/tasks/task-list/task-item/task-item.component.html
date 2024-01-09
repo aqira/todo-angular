@@ -1,12 +1,33 @@
-<div class="task row">
-  <label for="task" class="col-10">
-    <input type="checkbox"
-           id="task"
-           class="form-check-input me-2">
-    <span>test</span>
-  </label>
-  <div class="col-2">
-    <button class="btn btn-primary me-2">Edit</button>
-    <button class="btn btn-primary">Remove</button>
+<div class="task">
+  <div class="input-group col-10">
+    <div class="input-group-text">
+      <input type="checkbox"
+             id="task"
+             class="form-check-input">
+    </div>
+
+    <textarea class="form-control">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut et minima blanditiis. Tenetur, ducimus. Expedita neque eaque ullam ad beatae consectetur laboriosam, repudiandae dolore ipsa libero, rerum aperiam nemo, distinctio magni natus voluptatibus culpa doloribus sed sapiente iure! Asperiores in corrupti officia veritatis mollitia, nulla commodi. Quas incidunt rerum quisquam consequuntur sed facilis architecto officia reiciendis eligendi corrupti consequatur unde magnam omnis aut possimus officiis repellat, at doloremque repudiandae debitis dolor voluptate quis quod. Ab ipsa maxime tenetur aperiam corrupti ullam eligendi nobis sunt enim nostrum quo eaque voluptatibus, assumenda accusamus hic similique officia repellat dignissimos? Corrupti sit maxime perferendis.
+    </textarea>
+    <button type="button"
+            id="task-dropdown"
+            class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+
+
+    <ul class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="task-dropdown">
+      <li>
+        <a href="#"
+           class="dropdown-item">Edit</a>
+        <a href="#"
+           class="dropdown-item">End Editing</a>
+        <a href="#"
+           class="dropdown-item">Delete</a>
+      </li>
+    </ul>
   </div>
 </div>
