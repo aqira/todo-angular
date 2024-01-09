@@ -8,5 +8,6 @@ export class Task {
     this.id = id;
     this.description = description;
     this.creationDate = new Date();
+    this.doneDate = null;
   }
 }

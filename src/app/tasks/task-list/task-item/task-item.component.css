@@ -1,3 +1,7 @@
 .task{
   padding: 10px;
 }
+
+.task-done{
+  text-decoration: line-through;
+}

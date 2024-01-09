@@ -2,13 +2,15 @@
   <div class="input-group col-10">
     <div class="input-group-text">
       <input type="checkbox"
-             id="task"
-             class="form-check-input">
+             class="form-check-input"
+             [checked]="task.doneDate"
+             (click)="toggleTaskCheck()">
     </div>
 
-    <textarea class="form-control">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut et minima blanditiis. Tenetur, ducimus. Expedita neque eaque ullam ad beatae consectetur laboriosam, repudiandae dolore ipsa libero, rerum aperiam nemo, distinctio magni natus voluptatibus culpa doloribus sed sapiente iure! Asperiores in corrupti officia veritatis mollitia, nulla commodi. Quas incidunt rerum quisquam consequuntur sed facilis architecto officia reiciendis eligendi corrupti consequatur unde magnam omnis aut possimus officiis repellat, at doloremque repudiandae debitis dolor voluptate quis quod. Ab ipsa maxime tenetur aperiam corrupti ullam eligendi nobis sunt enim nostrum quo eaque voluptatibus, assumenda accusamus hic similique officia repellat dignissimos? Corrupti sit maxime perferendis.
-    </textarea>
+    <textarea class="form-control"
+              #taskInput
+              [readOnly]="!isEditing"
+              [style.text-decoration]="task.doneDate? 'line-through': 'none'">{{task.description}}</textarea>
     <button type="button"
             id="task-dropdown"
             class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
@@ -17,16 +19,20 @@
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
 
-
     <ul class="dropdown-menu dropdown-menu-end"
         aria-labelledby="task-dropdown">
       <li>
         <a href="#"
-           class="dropdown-item">Edit</a>
+           class="dropdown-item"
+           *ngIf="!isEditing"
+           (click)="isEditing = true">Edit</a>
         <a href="#"
-           class="dropdown-item">End Editing</a>
+           class="dropdown-item"
+           *ngIf="isEditing"
+           (click)="saveEdit()">Finish Editing</a>
         <a href="#"
-           class="dropdown-item">Delete</a>
+           class="dropdown-item"
+           (click)="deleteTask()">Delete</a>
       </li>
     </ul>
   </div>

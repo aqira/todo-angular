@@ -5,8 +5,11 @@
     </div>
     <div class="card-body">
       <div>
-        <app-task-item *ngFor="let task of tasks"></app-task-item>
-        <a href="#" class="link-dark" (click)="addTask()">(+) add a new task</a>
+        <app-task-item *ngFor="let taskEl of tasks"
+                       [task]="taskEl" (delete)=removeTask($event)></app-task-item>
+        <a href="#"
+           class="link-dark"
+           (click)="addTask()">(+) add a new task</a>
       </div>
     </div>
   </div>
