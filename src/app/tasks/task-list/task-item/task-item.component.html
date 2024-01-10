@@ -22,17 +22,14 @@
     <ul class="dropdown-menu dropdown-menu-end"
         aria-labelledby="task-dropdown">
       <li>
-        <a href="#"
-           class="dropdown-item"
+        <a class="dropdown-item"
            *ngIf="!isEditing"
            (click)="isEditing = true">Edit</a>
-        <a href="#"
-           class="dropdown-item"
+        <a class="dropdown-item"
            *ngIf="isEditing"
-           (click)="saveEdit()">Finish Editing</a>
-        <a href="#"
-           class="dropdown-item"
-           (click)="deleteTask()">Delete</a>
+           (click)="onEditTask()">Finish Editing</a>
+        <a class="dropdown-item"
+           (click)="onDeleteTask()">Delete</a>
       </li>
     </ul>
   </div>

@@ -1,25 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Task } from '../task.model';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
 })
-export class TaskListComponent {
-  taskCounter: number = 0;
-  tasks: Task[] = [];
+export class TaskListComponent implements OnInit {
+  tasks: Task[];
 
-  addTask() {
-    const newTask = new Task(`task-${++this.taskCounter}`, '');
-    console.log(newTask);
-    this.tasks.push(newTask);
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit() {
+    this.tasks = this.taskService.getTasks();
+    this.taskService.tasksChanged.subscribe(
+      (changes: Task[]) => (this.tasks = changes)
+    );
   }
 
-  removeTask(task: Task) {
-    const index = this.tasks.indexOf(task);
-    if (index !== -1) {
-      this.tasks.splice(index, 1);
-    }
+  onAddTask() {
+    this.taskService.addTask();
   }
 }

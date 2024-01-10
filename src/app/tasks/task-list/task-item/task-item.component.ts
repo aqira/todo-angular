@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Task } from '../../task.model';
+import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-task-item',
@@ -15,9 +16,10 @@ import { Task } from '../../task.model';
 })
 export class TaskItemComponent {
   @Input() task: Task;
-  @Output() delete: EventEmitter<Task> = new EventEmitter<Task>();
   @ViewChild('taskInput', { static: true }) taskInput: ElementRef;
   isEditing: boolean = true;
+
+  constructor(private taskService: TaskService) {}
 
   toggleTaskCheck() {
     if (!this.task.doneDate) {
@@ -27,12 +29,13 @@ export class TaskItemComponent {
     }
   }
 
-  saveEdit() {
+  onEditTask() {
     this.task.description = this.taskInput.nativeElement.value;
     this.isEditing = false;
+    this.taskService.editTask(this.task);
   }
 
-  deleteTask() {
-    this.delete.emit(this.task);
+  onDeleteTask() {
+    this.taskService.removeTask(this.task);
   }
 }

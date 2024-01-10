@@ -4,10 +4,8 @@ export class Task {
   public creationDate: Date;
   public doneDate: Date;
 
-  constructor(id: string, description: string) {
+  constructor(id: string) {
     this.id = id;
-    this.description = description;
     this.creationDate = new Date();
-    this.doneDate = null;
   }
 }
