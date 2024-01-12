@@ -9,7 +9,8 @@
 
     <textarea class="form-control"
               #taskInput
-              [readOnly]="!isEditing"
+              (input)="onSaveChange()"
+              [readOnly]="!task.isEditing"
               [style.text-decoration]="task.doneDate? 'line-through': 'none'">{{task.description}}</textarea>
     <button type="button"
             id="task-dropdown"
@@ -23,10 +24,10 @@
         aria-labelledby="task-dropdown">
       <li>
         <a class="dropdown-item"
-           *ngIf="!isEditing"
-           (click)="isEditing = true">Edit</a>
+           *ngIf="!task.isEditing"
+           (click)="task.isEditing = true">Edit</a>
         <a class="dropdown-item"
-           *ngIf="isEditing"
+           *ngIf="task.isEditing"
            (click)="onEditTask()">Finish Editing</a>
         <a class="dropdown-item"
            (click)="onDeleteTask()">Delete</a>

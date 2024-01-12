@@ -1,1 +1,18 @@
-<p>archived works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Created At</th>
+      <th scope="col">Done At</th>
+      <th scope="col">Title</th>
+      <th scope="col">Task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let archivedTask of archivedTasks">
+      <td>{{archivedTask.creationDate}}</td>
+      <td>{{archivedTask.doneDate}}</td>
+      <td>{{archivedTask.title}}</td>
+      <td>{{archivedTask.description}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -9,15 +9,17 @@ import { ArchivedComponent } from './archived/archived.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskService } from './tasks/task.service';
 import { ArchivedService } from './archived/archived.service';
+import { TasksComponent } from './tasks/tasks.component';
 
 const appRoutes: Routes = [
-  { path: 'tasks', component: TaskListComponent },
+  { path: 'tasks', component: TasksComponent },
   { path: 'archived', component: ArchivedComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    TasksComponent,
     TaskListComponent,
     TaskItemComponent,
     HeaderComponent,

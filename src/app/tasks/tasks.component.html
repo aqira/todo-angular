@@ -1,0 +1,41 @@
+<button class="btn btn-primary mb-5"
+        data-bs-toggle="modal"
+        data-bs-target="#taskGroupModal">Add a new Task Group</button>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="taskGroupModal"
+     tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5"
+            id="exampleModalLabel">Name Task Group</h1>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text"
+               #titleInput
+               class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">Close</button>
+        <button type="button"
+                class="btn btn-primary"
+                (click)="onAddTitle()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-task-list *ngFor="let gt of titles"
+          [title]="gt"></app-task-list>
+
+<aside class="confirmation-box ps-4 pe-4 d-flex flex-row-reverse">
+  <div class="btn btn-primary" (click)="onArchiveTasks()" *ngIf="titles.length > 0">archive all checked tasks</div>
+</aside>

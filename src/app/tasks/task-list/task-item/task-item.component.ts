@@ -17,7 +17,7 @@ import { TaskService } from '../../task.service';
 export class TaskItemComponent {
   @Input() task: Task;
   @ViewChild('taskInput', { static: true }) taskInput: ElementRef;
-  isEditing: boolean = true;
+
 
   constructor(private taskService: TaskService) {}
 
@@ -29,9 +29,13 @@ export class TaskItemComponent {
     }
   }
 
-  onEditTask() {
+  onSaveChange() {
     this.task.description = this.taskInput.nativeElement.value;
-    this.isEditing = false;
+    this.taskService.editTask(this.task);
+  }
+
+  onEditTask() {
+    this.task.isEditing = false;
     this.taskService.editTask(this.task);
   }
 
